@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import {RouterModule} from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -14,7 +17,16 @@ import { HomeComponent } from './views/home/home.component';
     HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot([
+      { path: 'home', component: HomeComponent},
+      { path: 'views', component: ViewsComponent},
+
+      { path: '', redirectTo: '/home', pathMatch: 'full'},
+      { path: '**', component: HomeComponent}
+    ], {useHash : true})
   ],
   providers: [],
   bootstrap: [AppComponent]
