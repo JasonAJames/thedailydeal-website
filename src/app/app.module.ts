@@ -1,31 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import {RouterModule} from '@angular/router';
-
+import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router'
 
 import { AppComponent } from './app.component';
-import { ViewsComponent } from './views/views.component';
-import { HomeComponent } from './views/home/home.component';
+import { TshirtComponent } from './deals/tshirt/tshirt.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewsComponent,
-    HomeComponent
+    TshirtComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
     RouterModule.forRoot([
-      { path: 'home', component: HomeComponent},
-      { path: 'views', component: ViewsComponent},
+      { path: 'home', component: AppComponent},
+      { path: 'tshirt', component: TshirtComponent},
+
 
       { path: '', redirectTo: '/home', pathMatch: 'full'},
-      { path: '**', component: HomeComponent}
+      { path: '**', component: AppComponent}
     ], {useHash : true})
   ],
   providers: [],
